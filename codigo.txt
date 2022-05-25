@@ -1,0 +1,21 @@
+<template>
+  <div v-if="result" class="about">
+    <h1>This is an about page</h1>
+    <p>User ID: {{result.userId}}</p>
+    <p>Title: {{result.title}}</p>
+  </div>
+</template>
+<script>
+import axios from "axios";
+export default {
+  data: ()=>({
+    result:null
+  }),
+  created() {
+    axios.get("https://jsonplaceholder.typicode.com/todos/1").then((result) => {
+      //console.log(result.data);
+      this.result=result.data;
+    });
+  },
+};
+</script>
